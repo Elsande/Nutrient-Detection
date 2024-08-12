@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Prediksi Gizi</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendors/mdi/css/materialdesignicons.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendors/css/vendor.bundle.base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/images/favicon.ico') }}">
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_navbar.html -->
+      <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+          <a class="navbar-brand brand-logo" href="#"><img src="{{ url_for('static', filename='assets/images/gizi.png') }}" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href="#"><img src="{{ url_for('static', filename='assets/images/logo-mini.svg') }}" alt="logo" /></a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-stretch">
+
+          <div class="navbar-nav navbar-nav-right">
+            <span id="welcome-text"> Selamat Datang di Gizi Balita! </span> 
+            <span id="datetime"></span>
+          </div>
+
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav">
+            <li class="nav-item nav-profile">
+              <a href="#" class="nav-link">
+                <div class="nav-profile-image">
+                  <img src="{{ url_for('static', filename='assets/images/puskes.png') }}" alt="profile">
+                  <span class="login-status online"></span>
+                  <!--change to offline or busy as needed-->
+                </div>
+                <div class="nav-profile-text d-flex flex-column">
+                  <span class="font-weight-bold mb-2">Puskesmas Tigaraksa</span>
+                </div>
+                <!-- <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i> -->
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('home') }}">
+                <span class="menu-title">Dashboard</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('evaluasi') }}">
+                <span class="menu-title">Visualisasi</span>
+                <i class="mdi mdi-chart-bar menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('data_route') }}">
+                <span class="menu-title">Data Gizi</span>
+                <i class="mdi mdi-table-large menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('prediksi') }}">
+                <span class="menu-title">Prediction</span>
+                <i class="mdi mdi-code-less-than menu-icon"></i>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title">
+                <span class="page-title-icon bg-gradient-primary text-white me-2">
+                  <i class="mdi mdi-home"></i>
+                </span> Dashboard
+              </h3>
+              <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                  <li class="breadcrumb-item active" aria-current="page">
+                    <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <div class="row">
+              <div class="col-md-12 stretch-card grid-margin">
+                <div class="card bg-gradient-danger card-img-holder text-white">
+                  <div class="card-body">
+                    <img src="{{ url_for('static', filename='assets/images/dashboard/circle.svg') }}" class="card-img-absolute" alt="circle-image" />
+                    <h4 class="font-weight-normal mb-3">Visualisasi <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+                    </h4>
+                    <h6 class="card-text">
+                      Visualisasi ini menyajikan visualisasi dari hasil evaluasi berisi Bar Chart Accuracy, Line Chart Accuracy, Pie Chart, terdapat confusion matrix berupa grafik yang menggambarkan nilai accuracy dari dua model yaitu Random Forest dan Decision Tree. Dengan menganalisis visualisasi ini, agar dapat membandingkan performa berbagai algoritma secara objektif dan mengidentifikasi algoritma terbaik untuk prediksi gizi balita.</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 stretch-card grid-margin">
+                <div class="card bg-gradient-info card-img-holder text-white">
+                  <div class="card-body">
+                    <img src="{{ url_for('static', filename='assets/images/dashboard/circle.svg') }}" class="card-img-absolute" alt="circle-image" />
+                    <h4 class="font-weight-normal mb-3">Data Gizi <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+                    </h4>
+                    <h6 class="card-text">
+                      Data gizi berisi kumpulan data pelatihan dan pengujian yang digunakan dalam prediksi gizi balita menggunakan pembelajaran machine learning.</h6>
+                  </div>
+                </div>
+              </div>
+            <div class="row">
+              <div class="col-md-12 stretch-card grid-margin">
+                <div class="card bg-gradient-success card-img-holder text-white">
+                  <div class="card-body">
+                    <img src="{{ url_for('static', filename='assets/images/dashboard/circle.svg') }}" class="card-img-absolute" alt="circle-image" />
+                    <h4 class="font-weight-normal mb-3">Prediction <i class="mdi mdi-diamond mdi-24px float-right"></i>
+                    </h4>
+                    <h6 class="card-text">
+                      Prediksi digunakan untuk memprediksi status gizi berdasarkan data masukan, menghasilkan prediksi menggunakan algoritma Random Forest dan Decision Tree.</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="{{ url_for('static', filename='assets/vendors/js/vendor.bundle.base.js') }}"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="{{ url_for('static', filename='assets/vendors/chart.js/Chart.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/jquery.cookie.js') }}"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="{{ url_for('static', filename='assets/js/off-canvas.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/hoverable-collapse.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/misc.js') }}"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="{{ url_for('static', filename='assets/js/dashboard.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/todolist.js') }}"></script>
+    <!-- End custom js for this page -->
+    <script>
+      function updateTime() {
+          var now = new Date();
+          var hours = now.getHours();
+          var minutes = now.getMinutes();
+          var seconds = now.getSeconds();
+          var ampm = hours >= 12 ? 'PM' : 'AM';
+          hours = hours % 12;
+          hours = hours ? hours : 12;
+          minutes = minutes < 10 ? '0' + minutes : minutes;
+          seconds = seconds < 10 ? '0' + seconds : seconds;
+          var timeString = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+          var dateString = now.toLocaleDateString();
+          document.getElementById('datetime').innerHTML = timeString + ' - ' + dateString;
+      }
+      setInterval(updateTime, 1000);
+    </script>
+  </body>
+</html>
